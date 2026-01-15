@@ -1,22 +1,42 @@
-<!DOCTYPE html>
-<html lang="en" >
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Biomorphs</title>
-  <link rel="stylesheet" href="./style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biomorph Playground</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<h1>Biomorphs</h1>
-<h3>Inspired by Keamil Velikiy</h3>
-<p>Click to evolve!</p>
-<div id="biomorphs"></div>
-<label for='genome'>Biomorph Genome</label>
-<input type="text" id="genome">
-<button id="load">Load Genome</label>
-<!-- partial -->
-  <script  src="./script.js"></script>
+  <header>
+    <div>
+      <h1>Biomorph Playground</h1>
+      <p class="subtitle">Эволюционируйте биоморфы кликом: выбранный образец порождает новое поколение.</p>
+    </div>
+    <div class="actions">
+      <button id="randomize">Новая популяция</button>
+      <button id="copy-genome">Скопировать геном</button>
+    </div>
+  </header>
 
+  <main>
+    <section class="grid" id="biomorph-grid" aria-label="Biomorph population"></section>
+
+    <section class="controls">
+      <div class="control">
+        <label for="genome-input">Геном (JSON массива пар):</label>
+        <textarea id="genome-input" rows="3" placeholder="[[0,1],[2,-3],...]"></textarea>
+      </div>
+      <div class="control-row">
+        <button id="apply-genome">Загрузить в выбранный</button>
+        <span id="status" aria-live="polite"></span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Клик по биоморфу делает его родителем, все остальные мутируют от него. Геном можно копировать/вставлять для воспроизведения. Алгоритм использует линейные сегменты и псевдослучайные мутации.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

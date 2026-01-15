@@ -1,6 +1,125 @@
-body{
-  text-align:center;
+:root {
+  --bg: #0d1117;
+  --panel: #161b22;
+  --border: #1f2933;
+  --text: #f8fafc;
+  --muted: #9ca3af;
+  --accent: #22c55e;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
- canvas:hover{
-  filter:drop-shadow(0px 0px 4px yellow);
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 15% 20%, rgba(34, 197, 94, 0.08), transparent 30%),
+              radial-gradient(circle at 80% 5%, rgba(59, 130, 246, 0.08), transparent 25%),
+              var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px;
+}
+
+header, main, footer {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+h1 { margin: 0 0 6px; }
+.subtitle { margin: 0; color: var(--muted); }
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+button {
+  background: linear-gradient(135deg, #1f2933, #11151c);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: transform 0.1s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  border-color: var(--accent);
+  box-shadow: 0 5px 20px rgba(34, 197, 94, 0.25);
+}
+
+button:active { transform: translateY(1px); }
+
+.grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin: 20px 0;
+}
+
+.cell {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cell.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+canvas {
+  width: 150px;
+  height: 150px;
+}
+
+.controls {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.control {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+}
+
+.control-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+textarea {
+  width: 100%;
+  min-height: 90px;
+  background: #0f141b;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 10px;
+}
+
+#status { color: var(--muted); }
+
+footer {
+  margin-top: 20px;
+  color: var(--muted);
 }
